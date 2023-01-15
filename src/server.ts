@@ -7,6 +7,8 @@ import morgan from "morgan";
 
 dotenv.config();
 
+import v1WelcomeRouter from "./api/v1/welcome/routes/welcomeRoutes";
+
 const app: Express = express();
 
 app.use(bodyParser.json());
@@ -20,9 +22,7 @@ app.use(
 app.use(helmet());
 app.use(morgan("short"));
 
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({ status: "OK", message: "Welcome to Node Typescript" });
-});
+app.use("/", v1WelcomeRouter);
 
 const port = process.env.PORT;
 
