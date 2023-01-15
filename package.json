@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Nodejs boilerplate with typescript",
   "repository": "https://github.com/sizarcorpse/nodejs-boilerplate-typescript",
-  "main": "server.js",
+  "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server.js",
-    "build": "tsc",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
+    "dev": "npm run clean && tsc && concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
+    "clean": "rimraf dist/",
+    "build": "tsc"
   },
   "keywords": [
     "nodejs",
